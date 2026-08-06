@@ -10,9 +10,9 @@ export default function ExperienceSection() {
                     <div className="pt-1">
                         <SectionLabel num="01" label="Experience" />
                         <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.02em', color: '#f5f0eb' }}>
-                            Where I've
+                            Professional
                             <br />
-                            <span style={{ fontStyle: 'italic', color: '#444' }}>worked.</span>
+                            <span style={{ fontStyle: 'italic', color: '#444' }}>experience.</span>
                         </div>
                     </div>
 
@@ -58,17 +58,6 @@ export default function ExperienceSection() {
                                 </div>
                             </div>
                         ))}
-                        <div
-                            className="py-8 opacity-40"
-                            style={{ borderBottom: '1px solid #141414' }}
-                        >
-                            <div className="flex items-center gap-3">
-                                <div className="w-3 h-px" style={{ backgroundColor: '#333' }} />
-                                <span className="text-[11px] tracking-[0.2em] uppercase" style={{ color: '#333', fontFamily: 'DM Sans, sans-serif' }}>
-                                    Add more experience
-                                </span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

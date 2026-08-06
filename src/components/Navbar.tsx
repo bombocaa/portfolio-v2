@@ -13,7 +13,7 @@ export default function Navbar() {
                 className="text-sm font-medium w-auto"
                 style={{ color: '#f5f0eb', fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', maxWidth: '180px', fontSize: '17px' }}
             >
-                your.name
+                My Portfolio
             </span>
             <div className="hidden md:flex items-center gap-10">
                 {NAV_LINKS.map((link) => (
@@ -34,14 +34,14 @@ export default function Navbar() {
             </div>
             <div
                 className="text-[11px] tracking-[0.22em] uppercase px-4 py-2 transition-colors duration-200 cursor-pointer"
-                style={{ border: '1px solid #222', color: '#555', fontFamily: 'DM Sans, sans-serif' }}
+                style={{ border: '1px solid #222', color: '#ffffffff', fontFamily: 'DM Sans, sans-serif' }}
                 onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = '#c8f135'
                     e.currentTarget.style.color = '#c8f135'
                 }}
                 onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#222'
-                    e.currentTarget.style.color = '#555'
+                    e.currentTarget.style.borderColor = '#ffffffff'
+                    e.currentTarget.style.color = '#ffffffff'
                 }}
             >
                 Resume
