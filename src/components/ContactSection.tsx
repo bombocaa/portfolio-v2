@@ -1,11 +1,10 @@
-import EditableText from './EditableText'
 import SectionLabel from './SectionLabel'
 
 const CONTACT_FIELDS = [
-    { label: 'Email', placeholder: 'your@email.com' },
-    { label: 'GitHub', placeholder: 'github.com/yourhandle' },
-    { label: 'LinkedIn', placeholder: 'linkedin.com/in/yourname' },
-    { label: 'Twitter / X', placeholder: '@yourhandle' },
+    { label: 'Email', value: 'your@email.com' },
+    { label: 'GitHub', value: 'github.com/yourhandle' },
+    { label: 'LinkedIn', value: 'linkedin.com/in/yourname' },
+    { label: 'Twitter / X', value: '@yourhandle' },
 ]
 
 export default function ContactSection() {
@@ -35,11 +34,12 @@ export default function ContactSection() {
                                     <span className="text-[10px] tracking-[0.25em] uppercase w-28 flex-shrink-0" style={{ color: '#333', fontFamily: 'DM Sans, sans-serif' }}>
                                         {field.label}
                                     </span>
-                                    <EditableText
-                                        placeholder={field.placeholder}
+                                    <span
                                         className="text-sm text-right flex-1"
                                         style={{ color: '#888', fontFamily: 'DM Sans, sans-serif' }}
-                                    />
+                                    >
+                                        {field.value}
+                                    </span>
                                 </div>
                             </div>
                         ))}

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import EditableText from './EditableText'
 import { NAV_LINKS } from '../data/portfolioData'
 
 export default function Navbar() {
@@ -10,11 +9,12 @@ export default function Navbar() {
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5"
             style={{ borderBottom: '1px solid #141414', backdropFilter: 'blur(16px)', backgroundColor: 'rgba(10,10,10,0.85)' }}
         >
-            <EditableText
-                placeholder="your.name"
+            <span
                 className="text-sm font-medium w-auto"
                 style={{ color: '#f5f0eb', fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', maxWidth: '180px', fontSize: '17px' }}
-            />
+            >
+                your.name
+            </span>
             <div className="hidden md:flex items-center gap-10">
                 {NAV_LINKS.map((link) => (
                     <a

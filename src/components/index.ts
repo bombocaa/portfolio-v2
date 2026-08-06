@@ -1,4 +1,3 @@
-export { default as EditableText } from './EditableText'
 export { default as Tag } from './Tag'
 export { default as SectionLabel } from './SectionLabel'
 export { default as Navbar } from './Navbar'

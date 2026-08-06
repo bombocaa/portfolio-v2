@@ -1,4 +1,3 @@
-import EditableText from './EditableText'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import { EXPERIENCE } from '../data/portfolioData'
@@ -26,32 +25,34 @@ export default function ExperienceSection() {
                             >
                                 <div className="flex items-start justify-between gap-8 mb-3">
                                     <div>
-                                        <EditableText
-                                            placeholder={exp.role}
+                                        <span
                                             className="text-lg font-medium block"
                                             style={{ color: '#f5f0eb', fontFamily: 'DM Sans, sans-serif', fontSize: '18px' }}
-                                        />
-                                        <EditableText
-                                            placeholder={exp.company}
+                                        >
+                                            {exp.role}
+                                        </span>
+                                        <span
                                             className="text-sm block mt-0.5 w-full"
                                             style={{ color: '#c8f135', fontFamily: 'DM Sans, sans-serif' }}
-                                        />
+                                        >
+                                            {exp.company}
+                                        </span>
                                     </div>
                                     <div className="flex-shrink-0">
-                                        <EditableText
-                                            placeholder={exp.period}
-                                            className="text-[11px] tracking-[0.15em] uppercase text-right"
+                                        <span
+                                            className="text-[11px] tracking-[0.15em] uppercase text-right block"
                                             style={{ color: '#444', fontFamily: 'DM Sans, sans-serif' }}
-                                        />
+                                        >
+                                            {exp.period}
+                                        </span>
                                     </div>
                                 </div>
-                                <EditableText
-                                    placeholder={exp.desc}
-                                    multiline
-                                    rows={2}
+                                <p
                                     className="text-sm leading-relaxed mb-4"
                                     style={{ color: '#555', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75' }}
-                                />
+                                >
+                                    {exp.desc}
+                                </p>
                                 <div className="flex flex-wrap gap-2">
                                     {exp.tags.map((tag) => <Tag key={tag} label={tag} />)}
                                 </div>

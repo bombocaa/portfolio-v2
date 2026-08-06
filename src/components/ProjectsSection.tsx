@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import EditableText from './EditableText'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import { PROJECTS } from '../data/portfolioData'
@@ -50,16 +49,17 @@ export default function ProjectsSection() {
 
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-start justify-between gap-6 mb-3">
-                                    <EditableText
-                                        placeholder={project.title}
-                                        className="text-xl font-medium"
+                                    <span
+                                        className="text-xl font-medium block"
                                         style={{
                                             fontFamily: 'DM Serif Display, serif',
                                             fontSize: '22px',
                                             color: hoveredProject === project.num ? '#f5f0eb' : '#888',
                                             transition: 'color 0.3s',
                                         }}
-                                    />
+                                    >
+                                        {project.title}
+                                    </span>
                                     <div
                                         className="flex-shrink-0 text-[10px] tracking-[0.2em] uppercase pt-1.5"
                                         style={{ color: '#333', fontFamily: 'DM Sans, sans-serif' }}
@@ -67,13 +67,12 @@ export default function ProjectsSection() {
                                         {project.year}
                                     </div>
                                 </div>
-                                <EditableText
-                                    placeholder={project.desc}
-                                    multiline
-                                    rows={2}
+                                <p
                                     className="text-sm leading-relaxed mb-4"
                                     style={{ color: '#444', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75', maxWidth: '600px' }}
-                                />
+                                >
+                                    {project.desc}
+                                </p>
                                 <div className="flex items-center justify-between">
                                     <div className="flex flex-wrap gap-2">
                                         {project.tags.map((tag) => <Tag key={tag} label={tag} />)}
