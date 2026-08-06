@@ -11,7 +11,7 @@ export default function Navbar() {
         >
             <span
                 className="text-sm font-medium w-auto"
-                style={{ color: '#f5f0eb', fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', maxWidth: '180px', fontSize: '17px' }}
+                style={{ color: '#ffffffff', fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', maxWidth: '180px', fontSize: '17px' }}
             >
                 My Portfolio
             </span>
@@ -22,7 +22,7 @@ export default function Navbar() {
                         href={`#${link.toLowerCase()}`}
                         className="text-[11px] tracking-[0.22em] uppercase transition-colors duration-200"
                         style={{
-                            color: hoveredNav === link ? '#f5f0eb' : '#444',
+                            color: hoveredNav === link ? '#f5f0eb' : '#ffffffff',
                             fontFamily: 'DM Sans, sans-serif',
                         }}
                         onMouseEnter={() => setHoveredNav(link)}
