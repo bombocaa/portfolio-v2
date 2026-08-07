@@ -12,7 +12,7 @@ export default function ContactSection() {
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
                 <SectionLabel num="04" label="Contact" />
 
-                <div className="grid gap-20" style={{ gridTemplateColumns: '1fr 1fr', alignItems: 'end' }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
                     <div>
                         <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(40px, 6vw, 88px)', lineHeight: 1, letterSpacing: '-0.025em', color: '#f5f0eb', marginBottom: '24px' }}>
                             Let's build

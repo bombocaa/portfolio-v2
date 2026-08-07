@@ -13,7 +13,7 @@ export default function StackSection() {
                     </div>
                 </div>
 
-                <div className="grid gap-12" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
                     {STACK_GROUPS.map((group) => (
                         <div key={group.label}>
                             <div

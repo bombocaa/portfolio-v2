@@ -6,7 +6,7 @@ export default function Navbar() {
 
     return (
         <nav
-            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5"
+            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-5"
             style={{ borderBottom: '1px solid #141414', backdropFilter: 'blur(16px)', backgroundColor: 'rgba(10,10,10,0.85)' }}
         >
             <span

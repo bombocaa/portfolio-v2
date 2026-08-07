@@ -6,7 +6,7 @@ export default function ExperienceSection() {
     return (
         <section id="experience" className="px-10 py-28" style={{ borderBottom: '1px solid #141414' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-                <div className="grid gap-20" style={{ gridTemplateColumns: '240px 1fr' }}>
+                <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-10 md:gap-20">
                     <div className="pt-1">
                         <SectionLabel num="01" label="Experience" />
                         <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.02em', color: '#f5f0eb' }}>
