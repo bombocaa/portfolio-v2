@@ -1,3 +1,7 @@
+import tglobalImg from '../assets/tglobal-project-mockup.png'
+import venacareImg from '../assets/venacare-project-mockup.png'
+import supremoImg from '../assets/supremo-project-mockup.png'
+
 export const NAV_LINKS = ['Home', 'Experience', 'Stack', 'Projects', 'Contact']
 
 export const EXPERIENCE = [
@@ -36,6 +40,7 @@ export const PROJECTS = [
     {
         num: '01',
         title: 'T-Global Residences Hub',
+        image: tglobalImg,
         desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
         tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase'],
         link: '',
@@ -43,26 +48,20 @@ export const PROJECTS = [
     },
     {
         num: '02',
-        title: 'Project Title Two',
-        desc: 'Describe the stack, your role, and any notable design or engineering decisions. Link to live site or GitHub.',
-        tags: ['Next.js', 'Tailwind', 'Vercel'],
+        title: 'VenaCare',
+        image: venacareImg,
+        desc: 'AI healthcare app for varicose vein severity assessment, CEAP classification, scan history, and wearable vibration therapy control.',
+        tags: ['Flutter', 'Node.Js', 'Firebase'],
         link: '#',
-        year: '2024',
+        year: '2026',
     },
     {
         num: '03',
-        title: 'Project Title Three',
-        desc: 'A component library, open-source contribution, design system, or any work that demonstrates craft and attention to detail.',
-        tags: ['CSS', 'Animation', 'Design'],
+        title: 'Supremo Barber Shop',
+        image: supremoImg,
+        desc: 'A Queuing Management System with a Marketing website for a barber shop with real-time live queuing app for the customers.',
+        tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Firebase'],
         link: '#',
-        year: '2024',
-    },
-    {
-        num: '04',
-        title: 'Project Title Four',
-        desc: 'Experiment, side project, or hackathon entry. Show that you build for fun, not just for work.',
-        tags: ['JavaScript', 'Canvas', 'WebGL'],
-        link: '#',
-        year: '2023',
+        year: '2026',
     },
 ]

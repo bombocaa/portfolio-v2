@@ -1,8 +1,21 @@
+import { useState, useEffect } from 'react'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import { PROJECTS } from '../data/portfolioData'
 
 export default function ProjectsSection() {
+    const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[number] | null>(null)
+
+    useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [selectedProject])
 
     return (
         <section id="projects" className="px-10 py-28" style={{ borderBottom: '1px solid #141414' }}>
@@ -27,58 +40,111 @@ export default function ProjectsSection() {
                                 borderTop: '1px solid transparent',
                                 marginTop: '-1px',
                             }}>
-                            <div
-                                className="flex-shrink-0 pt-1"
-                                style={{
-                                    fontFamily: 'DM Serif Display, serif',
-                                    fontSize: '13px',
-                                    fontStyle: 'italic',
-                                }}
-                            >
+                            <div className="flex-shrink-0 pt-1" style={{ fontFamily: 'DM Serif Display, serif', fontSize: '13px', fontStyle: 'italic' }} >
                                 {project.num}
                             </div>
 
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-start justify-between gap-6 mb-3">
-                                    <span
-                                        className="text-xl font-medium block"
-                                        style={{
-                                            fontFamily: 'DM Serif Display, serif',
-                                            fontSize: '22px',
-                                        }}
-                                    >
+                                    <span className="text-xl font-medium block" style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', }}>
                                         {project.title}
                                     </span>
-                                    <div
-                                        className="flex-shrink-0 text-[10px] tracking-[0.2em] uppercase pt-1.5"
-                                        style={{ color: '#ffffffff', fontFamily: 'DM Sans, sans-serif' }}
-                                    >
+                                    <div className="flex-shrink-0 text-[10px] tracking-[0.2em] uppercase pt-1.5" style={{ color: '#ffffffff', fontFamily: 'DM Sans, sans-serif' }}>
                                         {project.year}
                                     </div>
                                 </div>
-                                <p
-                                    className="text-sm leading-relaxed mb-4"
-                                    style={{ color: '#ffffffff', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75', maxWidth: '600px' }}
-                                >
+
+                                <p className="text-sm leading-relaxed mb-4" style={{ color: '#ffffffff', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75', maxWidth: '600px' }}>
                                     {project.desc}
                                 </p>
+
                                 <div className="flex items-center justify-between">
+
                                     <div className="flex flex-wrap gap-2">
                                         {project.tags.map((tag) => <Tag key={tag} label={tag} />)}
                                     </div>
-                                    <div
-                                        className="flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase transition-colors duration-300"
-                                        style={{ color: '#ffffffff', fontFamily: 'DM Sans, sans-serif' }}
+
+                                    <button
+                                        type="button"
+                                        onClick={() => setSelectedProject(project)}
+                                        className="flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-300 hover:text-[#c8f135]"
+                                        style={{ color: '#ffffffff', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none', padding: 0 }}
                                     >
-                                        <span>View</span>
-                                        <span style={{ fontSize: '16px', lineHeight: 1 }}>→</span>
-                                    </div>
+                                        <span>View →</span>
+
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {selectedProject && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm width"
+                    onClick={() => setSelectedProject(null)}
+                >
+                    <div
+                        className="relative w-full max-w-lg p-8 rounded-lg"
+                        style={{ backgroundColor: '#0a0a0a', border: '1px solid #222', color: '#f5f0eb' }}
+                        onClick={(e) => e.stopPropagation()}
+
+                    >
+                        <button
+                            type="button"
+                            onClick={() => setSelectedProject(null)}
+                            className="absolute top-4 right-4 text-xl cursor-pointer hover:text-[#c8f135]"
+                            style={{ color: '#888', background: 'none', border: 'none' }}
+                        >
+                            ✕
+                        </button>
+
+                        <div className="text-xs uppercase tracking-widest mb-2" style={{ color: '#c8f135', fontFamily: 'DM Sans, sans-serif' }}>
+                            Project Details • {selectedProject.year}
+                        </div>
+
+                        <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: 'DM Serif Display, serif' }}>
+                            {selectedProject.title}
+                        </h3>
+
+                        {selectedProject.image && (
+                            <div className="w-full overflow-hidden rounded-md mb-4" style={{ height: '400px', border: '1px solid #222' }}>
+                                <img
+                                    src={selectedProject.image}
+                                    alt={selectedProject.title}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        )}
+
+                        <p className="text-sm leading-relaxed mb-6" style={{ color: '#aaa', fontFamily: 'DM Sans, sans-serif' }}>
+                            {selectedProject.desc}
+                        </p>
+
+                        <div className="mb-6">
+                            <div className="text-xs uppercase tracking-wider mb-2" style={{ color: '#666', fontFamily: 'DM Sans, sans-serif' }}>
+                                Technologies Used
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {selectedProject.tags.map((tag) => <Tag key={tag} label={tag} />)}
+                            </div>
+                        </div>
+
+                        {selectedProject.link && selectedProject.link !== '#' && (
+                            <a
+                                href={selectedProject.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block px-5 py-2.5 text-xs uppercase tracking-widest transition-colors"
+                                style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif' }}
+                            >
+                                Visit Project →
+                            </a>
+                        )}
+                    </div>
+                </div>
+            )}
         </section>
     )
 }
