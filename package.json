@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "vite --port 3000 --open",
         "start": "vite",
-        "build": "vite build",
+        "build": "npx vite build",
         "preview": "vite preview",
         "format": "oxfmt"
     },
