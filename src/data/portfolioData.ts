@@ -35,11 +35,11 @@ export const STACK_GROUPS = [
 export const PROJECTS = [
     {
         num: '01',
-        title: 'Project Title One',
-        desc: 'A short description of what this project does, what problem it solves, and what makes it interesting technically or visually.',
-        tags: ['React', 'TypeScript', 'API'],
-        link: '#',
-        year: '2025',
+        title: 'T-Global Residences Hub',
+        desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
+        tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase'],
+        link: '',
+        year: '2025-2026',
     },
     {
         num: '02',
