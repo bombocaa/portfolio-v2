@@ -1,5 +1,5 @@
 import SectionLabel from './SectionLabel'
-import homeProfileImg from '@/assets/home_profile.jpg'
+import homeProfileImg from '../assets/home_profile.jpg'
 
 export default function HomeSection() {
     return (
