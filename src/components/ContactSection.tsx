@@ -1,10 +1,9 @@
 import SectionLabel from './SectionLabel'
 
 const CONTACT_FIELDS = [
-    { label: 'Email', value: 'your@email.com' },
-    { label: 'GitHub', value: 'github.com/yourhandle' },
-    { label: 'LinkedIn', value: 'linkedin.com/in/yourname' },
-    { label: 'Twitter / X', value: '@yourhandle' },
+    { label: 'Email', value: 'jasperdeguito20@gmail.com', href: 'mailto:jasperdeguito20@gmail.com' },
+    { label: 'GitHub', value: 'https://github.com/bombocaa', href: 'https://github.com/bombocaa' },
+    { label: 'LinkedIn', value: 'www.linkedin.com/in/jasper-deguito-356570393', href: 'https://www.linkedin.com/in/jasper-deguito-356570393' },
 ]
 
 export default function ContactSection() {
@@ -34,17 +33,21 @@ export default function ContactSection() {
                                     <span className="text-[10px] tracking-[0.25em] uppercase w-28 flex-shrink-0" style={{ color: '#333', fontFamily: 'DM Sans, sans-serif' }}>
                                         {field.label}
                                     </span>
-                                    <span
-                                        className="text-sm text-right flex-1"
+                                    <a
+                                        href={field.href}
+                                        target={field.href.startsWith('mailto:') ? '_self' : '_blank'}
+                                        rel="noopener noreferrer"
+                                        className="text-sm text-right flex-1 transition-colors hover:text-[#c8f135]"
                                         style={{ color: '#888', fontFamily: 'DM Sans, sans-serif' }}
                                     >
                                         {field.value}
-                                    </span>
+                                    </a>
                                 </div>
                             </div>
                         ))}
                         <div className="pt-8">
-                            <div
+                            <a
+                                href="mailto:jasperdeguito20@gmail.com"
                                 className="inline-flex items-center gap-3 text-[11px] tracking-[0.22em] uppercase px-8 py-4 cursor-pointer transition-all duration-200"
                                 style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif' }}
                                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#d4ff40' }}
@@ -52,7 +55,7 @@ export default function ContactSection() {
                             >
                                 <span>Send a message</span>
                                 <span style={{ fontSize: '16px' }}>→</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
