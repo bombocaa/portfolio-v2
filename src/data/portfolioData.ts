@@ -43,6 +43,12 @@ export const PROJECTS = [
         image: tglobalImg,
         desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
         tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase'],
+        features: [
+            'Augmented Reality 3D room visualization & Virtual Reality floorplan tours',
+            'Admin portal with predictive & descriptive analytics',
+            'Cross-platform tenant mobile app with Firebase',
+            'Used AI Chatbot for guest/non-tenant inquiries'
+        ],
         link: '',
         year: '2025-2026',
     },
@@ -52,6 +58,11 @@ export const PROJECTS = [
         image: venacareImg,
         desc: 'AI healthcare app for varicose vein severity assessment, CEAP classification, scan history, and wearable vibration therapy control.',
         tags: ['Flutter', 'Node.Js', 'Firebase'],
+        features: [
+            'Varicose vein severity assessment & CEAP classification',
+            'Scan history tracking & health monitoring',
+            'Wearable vibration therapy device control',
+        ],
         link: '#',
         year: '2026',
     },
@@ -61,6 +72,11 @@ export const PROJECTS = [
         image: supremoImg,
         desc: 'A Queuing Management System with a Marketing website for a barber shop with real-time live queuing app for the customers.',
         tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Firebase'],
+        features: [
+            'Real-time live queue management & customer status',
+            'Barber shop marketing landing page',
+            'Automated queue ticket tracking & updates',
+        ],
         link: '#',
         year: '2026',
     },
