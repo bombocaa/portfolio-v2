@@ -32,7 +32,10 @@ export default function Navbar() {
                     </a>
                 ))}
             </div>
-            <div
+            <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[11px] tracking-[0.22em] uppercase px-4 py-2 transition-colors duration-200 cursor-pointer"
                 style={{ border: '1px solid #222', color: '#ffffffff', fontFamily: 'DM Sans, sans-serif' }}
                 onMouseEnter={(e) => {
@@ -45,7 +48,7 @@ export default function Navbar() {
                 }}
             >
                 Resume
-            </div>
+            </a>
         </nav>
     )
 }
