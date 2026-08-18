@@ -1,17 +1,14 @@
-import { useState } from 'react'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
-import ProjectModal from './ProjectModal'
 import Footer from './Footer'
 import { MORE_PROJECTS, Project } from '../data/portfolioData'
 
 interface AllProjectsPageProps {
     onBack: () => void
+    onViewProject?: (project: Project) => void
 }
 
-export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-
+export default function AllProjectsPage({ onBack, onViewProject }: AllProjectsPageProps) {
     return (
         <div style={{ backgroundColor: '#0a0a0a', color: '#f5f0eb', minHeight: '100vh' }}>
             {/* Top Navigation Bar */}
@@ -106,7 +103,7 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                             <div className="flex items-center gap-3 flex-wrap">
                                                 <button
                                                     type="button"
-                                                    onClick={() => setSelectedProject(project)}
+                                                    onClick={() => onViewProject?.(project)}
                                                     className="text-left text-xl font-medium block cursor-pointer transition-colors duration-200 hover:text-[#c8f135]"
                                                     style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', color: '#f5f0eb', background: 'none', border: 'none', padding: 0 }}
                                                 >
@@ -149,7 +146,7 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                             <div className="flex items-center gap-5">
                                                 <button
                                                     type="button"
-                                                    onClick={() => setSelectedProject(project)}
+                                                    onClick={() => onViewProject?.(project)}
                                                     className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-300 hover:text-[#c8f135]"
                                                     style={{ color: '#ffffff', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none', padding: 0 }}
                                                 >
@@ -198,13 +195,6 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                 </div>
             </main>
 
-            {/* Modal */}
-            <ProjectModal
-                project={selectedProject}
-                onClose={() => setSelectedProject(null)}
-            />
-
-            {/* Footer */}
             <Footer />
         </div>
     )

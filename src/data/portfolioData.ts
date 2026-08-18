@@ -40,6 +40,7 @@ export interface Project {
     num: string
     title: string
     image?: string
+    images?: string[]
     desc: string
     tags: string[]
     features?: string[]

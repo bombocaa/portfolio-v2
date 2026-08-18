@@ -1,16 +1,13 @@
-import { useState } from 'react'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
-import ProjectModal from './ProjectModal'
 import { PROJECTS, Project } from '../data/portfolioData'
 
 interface ProjectsSectionProps {
     onViewAll?: () => void
+    onViewProject?: (project: Project) => void
 }
 
-export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-
+export default function ProjectsSection({ onViewAll, onViewProject }: ProjectsSectionProps) {
     return (
         <section id="projects" className="px-6 md:px-10 py-28" style={{ borderBottom: '1px solid #141414' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -54,7 +51,7 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
                                     <div className="flex items-center gap-3 flex-wrap">
                                         <button
                                             type="button"
-                                            onClick={() => setSelectedProject(project)}
+                                            onClick={() => onViewProject?.(project)}
                                             className="text-left text-xl font-medium block cursor-pointer transition-colors hover:text-[#c8f135]"
                                             style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', background: 'none', border: 'none', padding: 0, color: '#f5f0eb' }}
                                         >
@@ -85,7 +82,7 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
 
                                     <button
                                         type="button"
-                                        onClick={() => setSelectedProject(project)}
+                                        onClick={() => onViewProject?.(project)}
                                         className="flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-300 hover:text-[#c8f135]"
                                         style={{ color: '#ffffff', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none', padding: 0 }}
                                     >
@@ -128,12 +125,6 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
                     </div>
                 )}
             </div>
-
-            {/* Modal */}
-            <ProjectModal
-                project={selectedProject}
-                onClose={() => setSelectedProject(null)}
-            />
         </section>
     )
 }
