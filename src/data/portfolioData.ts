@@ -1,6 +1,15 @@
 import tglobalImg from '../assets/tglobal-project-mockup.png'
 import venacareImg from '../assets/venacare-project-mockup.png'
 import supremoImg from '../assets/supremo-project-mockup.png'
+import supremoHome from '../assets/supremo-home.png'
+import supremoApp from '../assets/supremo-app.png'
+import supremoServices from '../assets/supremo-services.png'
+import supremoDashboard from '../assets/supremo-dashboard.png'
+import supremoLogin from '../assets/supremo-login.png'
+import supremoWhy from '../assets/supremo-why.png'
+import supremoServices2 from '../assets/supremo-services2.png'
+import supremoProducts from '../assets/supremo-products.png'
+import supremoBranches from '../assets/supremo-branches.png'
 
 export const NAV_LINKS = ['Home', 'Experience', 'Stack', 'Projects', 'Contact']
 
@@ -92,6 +101,7 @@ export const PROJECTS: Project[] = [
         title: 'Supremo Barber Shop',
         category: 'Web App',
         image: supremoImg,
+        images: [supremoHome, supremoApp, supremoServices, supremoDashboard, supremoLogin, supremoWhy, supremoServices2, supremoProducts, supremoBranches],
         desc: 'A Queuing Management System with a Marketing website for a barber shop with real-time live queuing app for the customers.',
         tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Firebase'],
         features: [
