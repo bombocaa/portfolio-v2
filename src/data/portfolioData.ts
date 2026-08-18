@@ -1,7 +1,16 @@
+import tglobalMarketingHome from '../assets/tglobal-marketing-home.png'
+import tglobalAbout from '../assets/tglobal-about.png'
+import tglobalLocation from '../assets/tglobal-location.png'
+import tglobalVirtualTour from '../assets/tglobal-virtualtour.png'
+import tglobalAR from '../assets/tglobal-ar.png'
 import tglobalLogin from '../assets/tglobal-login.png'
 import tglobalWelcome from '../assets/tglobal-welcome.png'
 import tglobalOverview from '../assets/tglobal-overview.png'
 import tglobalMaintenance from '../assets/tglobal-maintenance.png'
+import tglobalAppLogin from '../assets/tglobal-app-login.jpg'
+import tglobalAppHome from '../assets/tglobal-app-home.jpg'
+import tglobalAppBill from '../assets/tglobal-app-bill.jpg'
+import tglobalAppReservations from '../assets/tglobal-app-reservations.jpg'
 import venacareImg from '../assets/venacare-project-mockup.png'
 import supremoHome from '../assets/supremo-home.png'
 import supremoApp from '../assets/supremo-app.png'
@@ -68,15 +77,24 @@ export const PROJECTS: Project[] = [
         num: '01',
         title: 'T-Global Residences Hub',
         category: 'Platform',
-        image: tglobalOverview,
+        image: tglobalMarketingHome,
         images: [
+            tglobalMarketingHome,
+            tglobalAbout,
+            tglobalLocation,
+            tglobalVirtualTour,
+            tglobalAR,
             tglobalLogin,
             tglobalWelcome,
             tglobalOverview,
             tglobalMaintenance,
+            tglobalAppHome,
+            tglobalAppLogin,
+            tglobalAppBill,
+            tglobalAppReservations,
         ],
         desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
-        tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase'],
+        tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase', 'Tailwind CSS'],
         features: [
             'Augmented Reality 3D room visualization & Virtual Reality floorplan tours',
             'Admin portal with predictive & descriptive analytics',
