@@ -36,7 +36,22 @@ export const STACK_GROUPS = [
     },
 ]
 
-export const PROJECTS = [
+export interface Project {
+    num: string
+    title: string
+    image?: string
+    desc: string
+    tags: string[]
+    features?: string[]
+    link?: string
+    github?: string
+    year: string
+    featured?: boolean
+    category?: string
+}
+
+// First 3 featured projects shown on the main homepage
+export const PROJECTS: Project[] = [
     {
         num: '01',
         title: 'T-Global Residences Hub',
@@ -51,6 +66,7 @@ export const PROJECTS = [
         ],
         link: '',
         year: '2025-2026',
+        featured: true,
     },
     {
         num: '02',
@@ -65,6 +81,7 @@ export const PROJECTS = [
         ],
         link: '#',
         year: '2026',
+        featured: true,
     },
     {
         num: '03',
@@ -79,5 +96,16 @@ export const PROJECTS = [
         ],
         link: '#',
         year: '2026',
+        featured: true,
     },
+]
+
+// Additional projects displayed on the "View More / All Projects" page (excluding the first 3 featured projects)
+export const MORE_PROJECTS: Project[] = [
+
+]
+
+export const ALL_PROJECTS: Project[] = [
+    ...PROJECTS,
+    ...MORE_PROJECTS,
 ]

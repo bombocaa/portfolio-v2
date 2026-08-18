@@ -1,7 +1,11 @@
 import { useState } from 'react'
 import { NAV_LINKS } from '../data/portfolioData'
 
-export default function Navbar() {
+interface NavbarProps {
+    onNavigate?: (target: string) => void
+}
+
+export default function Navbar({ onNavigate }: NavbarProps = {}) {
     const [hoveredNav, setHoveredNav] = useState<string | null>(null)
 
     return (
@@ -9,12 +13,19 @@ export default function Navbar() {
             className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 py-5"
             style={{ borderBottom: '1px solid #141414', backdropFilter: 'blur(16px)', backgroundColor: 'rgba(10,10,10,0.85)' }}
         >
-            <span
-                className="text-sm font-medium w-auto"
-                style={{ color: '#ffffffff', fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', maxWidth: '180px', fontSize: '17px' }}
+            <a
+                href="#home"
+                onClick={(e) => {
+                    if (onNavigate) {
+                        e.preventDefault()
+                        onNavigate('home')
+                    }
+                }}
+                className="text-sm font-medium w-auto cursor-pointer transition-colors hover:text-[#c8f135]"
+                style={{ color: '#ffffffff', fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', maxWidth: '180px', fontSize: '17px', textDecoration: 'none' }}
             >
                 My Portfolio
-            </span>
+            </a>
             <div className="hidden md:flex items-center gap-10">
                 {NAV_LINKS.map((link) => (
                     <a
