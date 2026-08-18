@@ -28,6 +28,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
     if (!project) return null
 
+    const categoryText = project.category || project.type
+
     return (
         <div
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
@@ -47,8 +49,16 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     ✕
                 </button>
 
-                <div className="text-xs uppercase tracking-widest mb-2" style={{ color: '#c8f135', fontFamily: 'DM Sans, sans-serif' }}>
-                    Project Details • {project.year}
+                <div className="text-xs uppercase tracking-widest mb-2 flex items-center gap-2" style={{ color: '#c8f135', fontFamily: 'DM Sans, sans-serif' }}>
+                    <span>Project Details</span>
+                    {categoryText && (
+                        <>
+                            <span>•</span>
+                            <span>{categoryText}</span>
+                        </>
+                    )}
+                    <span>•</span>
+                    <span>{project.year}</span>
                 </div>
 
                 <h3 className="text-2xl font-semibold mb-6" style={{ fontFamily: 'DM Serif Display, serif' }}>

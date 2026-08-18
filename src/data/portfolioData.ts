@@ -48,6 +48,7 @@ export interface Project {
     year: string
     featured?: boolean
     category?: string
+    type?: string
 }
 
 // First 3 featured projects shown on the main homepage
@@ -55,6 +56,7 @@ export const PROJECTS: Project[] = [
     {
         num: '01',
         title: 'T-Global Residences Hub',
+        category: 'Platform',
         image: tglobalImg,
         desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
         tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase'],
@@ -71,6 +73,7 @@ export const PROJECTS: Project[] = [
     {
         num: '02',
         title: 'VenaCare',
+        category: 'Mobile App',
         image: venacareImg,
         desc: 'AI healthcare app for varicose vein severity assessment, CEAP classification, scan history, and wearable vibration therapy control.',
         tags: ['Flutter', 'Node.Js', 'Firebase'],
@@ -86,6 +89,7 @@ export const PROJECTS: Project[] = [
     {
         num: '03',
         title: 'Supremo Barber Shop',
+        category: 'Web App',
         image: supremoImg,
         desc: 'A Queuing Management System with a Marketing website for a barber shop with real-time live queuing app for the customers.',
         tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Firebase'],

@@ -68,96 +68,112 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                     </div>
 
                     {/* Projects List */}
-                    <div className="flex flex-col">
-                        {MORE_PROJECTS.map((project) => (
-                            <div
-                                key={project.num}
-                                className="group py-10 flex items-start gap-8 md:gap-12 transition-colors duration-200"
-                                style={{
-                                    borderBottom: '1px solid #141414',
-                                    borderTop: '1px solid transparent',
-                                    marginTop: '-1px',
-                                }}
+                    {MORE_PROJECTS.length === 0 ? (
+                        <div className="py-20 text-center" style={{ border: '1px dashed #222' }}>
+                            <p className="text-sm mb-4" style={{ color: '#666', fontFamily: 'DM Sans, sans-serif' }}>
+                                No additional projects in the archive yet.
+                            </p>
+                            <button
+                                type="button"
+                                onClick={onBack}
+                                className="text-[11px] tracking-[0.2em] uppercase px-4 py-2 cursor-pointer transition-colors"
+                                style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif', border: 'none' }}
                             >
+                                ← Back to Home
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="flex flex-col">
+                            {MORE_PROJECTS.map((project) => (
                                 <div
-                                    className="flex-shrink-0 pt-1 text-sm md:text-base font-medium"
-                                    style={{ fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', color: '#666' }}
+                                    key={project.num}
+                                    className="group py-10 flex items-start gap-8 md:gap-12 transition-colors duration-200"
+                                    style={{
+                                        borderBottom: '1px solid #141414',
+                                        borderTop: '1px solid transparent',
+                                        marginTop: '-1px',
+                                    }}
                                 >
-                                    {project.num}
-                                </div>
-
-                                <div className="flex-1 min-w-0">
-                                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-6 mb-3">
-                                        <div className="flex items-center gap-3">
-                                            <button
-                                                type="button"
-                                                onClick={() => setSelectedProject(project)}
-                                                className="text-left text-xl font-medium block cursor-pointer transition-colors duration-200 hover:text-[#c8f135]"
-                                                style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', color: '#f5f0eb', background: 'none', border: 'none', padding: 0 }}
-                                            >
-                                                {project.title}
-                                            </button>
-                                            {project.category && (
-                                                <span className="text-[9px] tracking-[0.2em] uppercase px-2 py-0.5" style={{ border: '1px solid #222', color: '#888', fontFamily: 'DM Sans, sans-serif' }}>
-                                                    {project.category}
-                                                </span>
-                                            )}
-                                        </div>
-                                        <div className="flex-shrink-0 text-[10px] tracking-[0.2em] uppercase pt-1" style={{ color: '#888', fontFamily: 'DM Sans, sans-serif' }}>
-                                            {project.year}
-                                        </div>
+                                    <div
+                                        className="flex-shrink-0 pt-1 text-sm md:text-base font-medium"
+                                        style={{ fontFamily: 'DM Serif Display, serif', fontStyle: 'italic', color: '#666' }}
+                                    >
+                                        {project.num}
                                     </div>
 
-                                    <p className="text-sm leading-relaxed mb-5" style={{ color: '#999', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75', maxWidth: '750px' }}>
-                                        {project.desc}
-                                    </p>
-
-                                    {project.features && project.features.length > 0 && (
-                                        <div className="mb-5 pl-4" style={{ borderLeft: '2px solid #222' }}>
-                                            <ul className="text-xs leading-relaxed flex flex-col gap-1" style={{ color: '#666', fontFamily: 'DM Sans, sans-serif' }}>
-                                                {project.features.slice(0, 2).map((feat, idx) => (
-                                                    <li key={idx} className="list-disc list-inside">
-                                                        {feat}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
-
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                                        <div className="flex flex-wrap gap-2">
-                                            {project.tags.map((tag) => (
-                                                <Tag key={tag} label={tag} />
-                                            ))}
-                                        </div>
-
-                                        <div className="flex items-center gap-5">
-                                            <button
-                                                type="button"
-                                                onClick={() => setSelectedProject(project)}
-                                                className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-300 hover:text-[#c8f135]"
-                                                style={{ color: '#ffffff', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none', padding: 0 }}
-                                            >
-                                                <span>View Details →</span>
-                                            </button>
-
-                                            {project.link && project.link !== '#' && (
-                                                <a
-                                                    href={project.link}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-[11px] tracking-[0.2em] uppercase text-[#c8f135] hover:underline"
-                                                    style={{ fontFamily: 'DM Sans, sans-serif' }}
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-6 mb-3">
+                                            <div className="flex items-center gap-3 flex-wrap">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setSelectedProject(project)}
+                                                    className="text-left text-xl font-medium block cursor-pointer transition-colors duration-200 hover:text-[#c8f135]"
+                                                    style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', color: '#f5f0eb', background: 'none', border: 'none', padding: 0 }}
                                                 >
-                                                    Live Link ↗
-                                                </a>
-                                            )}
+                                                    {project.title}
+                                                </button>
+                                                {(project.category || project.type) && (
+                                                    <span className="text-[9px] tracking-[0.2em] uppercase px-2 py-0.5" style={{ border: '1px solid #222', color: '#888', fontFamily: 'DM Sans, sans-serif' }}>
+                                                        {project.category || project.type}
+                                                    </span>
+                                                )}
+                                            </div>
+                                            <div className="flex-shrink-0 text-[10px] tracking-[0.2em] uppercase pt-1" style={{ color: '#888', fontFamily: 'DM Sans, sans-serif' }}>
+                                                {project.year}
+                                            </div>
+                                        </div>
+
+                                        <p className="text-sm leading-relaxed mb-5" style={{ color: '#999', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75', maxWidth: '750px' }}>
+                                            {project.desc}
+                                        </p>
+
+                                        {project.features && project.features.length > 0 && (
+                                            <div className="mb-5 pl-4" style={{ borderLeft: '2px solid #222' }}>
+                                                <ul className="text-xs leading-relaxed flex flex-col gap-1" style={{ color: '#666', fontFamily: 'DM Sans, sans-serif' }}>
+                                                    {project.features.slice(0, 2).map((feat, idx) => (
+                                                        <li key={idx} className="list-disc list-inside">
+                                                            {feat}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+
+                                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                            <div className="flex flex-wrap gap-2">
+                                                {project.tags.map((tag) => (
+                                                    <Tag key={tag} label={tag} />
+                                                ))}
+                                            </div>
+
+                                            <div className="flex items-center gap-5">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => setSelectedProject(project)}
+                                                    className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-300 hover:text-[#c8f135]"
+                                                    style={{ color: '#ffffff', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none', padding: 0 }}
+                                                >
+                                                    <span>View Details →</span>
+                                                </button>
+
+                                                {project.link && project.link !== '#' && (
+                                                    <a
+                                                        href={project.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-[11px] tracking-[0.2em] uppercase text-[#c8f135] hover:underline"
+                                                        style={{ fontFamily: 'DM Sans, sans-serif' }}
+                                                    >
+                                                        Live Link ↗
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    )}
 
                     {/* Back to top / return button */}
                     <div className="mt-16 pt-8 flex items-center justify-between" style={{ borderTop: '1px solid #141414' }}>

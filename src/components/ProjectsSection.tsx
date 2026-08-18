@@ -51,14 +51,24 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
 
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-start justify-between gap-6 mb-3">
-                                    <button
-                                        type="button"
-                                        onClick={() => setSelectedProject(project)}
-                                        className="text-left text-xl font-medium block cursor-pointer transition-colors hover:text-[#c8f135]"
-                                        style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', background: 'none', border: 'none', padding: 0, color: '#f5f0eb' }}
-                                    >
-                                        {project.title}
-                                    </button>
+                                    <div className="flex items-center gap-3 flex-wrap">
+                                        <button
+                                            type="button"
+                                            onClick={() => setSelectedProject(project)}
+                                            className="text-left text-xl font-medium block cursor-pointer transition-colors hover:text-[#c8f135]"
+                                            style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', background: 'none', border: 'none', padding: 0, color: '#f5f0eb' }}
+                                        >
+                                            {project.title}
+                                        </button>
+                                        {(project.category || project.type) && (
+                                            <span
+                                                className="text-[9px] tracking-[0.2em] uppercase px-2 py-0.5"
+                                                style={{ border: '1px solid #222', color: '#888', fontFamily: 'DM Sans, sans-serif' }}
+                                            >
+                                                {project.category || project.type}
+                                            </span>
+                                        )}
+                                    </div>
                                     <div className="flex-shrink-0 text-[10px] tracking-[0.2em] uppercase pt-1.5" style={{ color: '#ffffff', fontFamily: 'DM Sans, sans-serif' }}>
                                         {project.year}
                                     </div>
