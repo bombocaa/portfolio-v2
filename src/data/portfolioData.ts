@@ -1,4 +1,7 @@
-import tglobalImg from '../assets/tglobal-project-mockup.png'
+import tglobalLogin from '../assets/tglobal-login.png'
+import tglobalWelcome from '../assets/tglobal-welcome.png'
+import tglobalOverview from '../assets/tglobal-overview.png'
+import tglobalMaintenance from '../assets/tglobal-maintenance.png'
 import venacareImg from '../assets/venacare-project-mockup.png'
 import supremoHome from '../assets/supremo-home.png'
 import supremoApp from '../assets/supremo-app.png'
@@ -65,7 +68,13 @@ export const PROJECTS: Project[] = [
         num: '01',
         title: 'T-Global Residences Hub',
         category: 'Platform',
-        image: tglobalImg,
+        image: tglobalOverview,
+        images: [
+            tglobalLogin,
+            tglobalWelcome,
+            tglobalOverview,
+            tglobalMaintenance,
+        ],
         desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
         tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase'],
         features: [
