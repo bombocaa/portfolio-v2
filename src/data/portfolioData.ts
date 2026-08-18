@@ -101,7 +101,7 @@ export const PROJECTS: Project[] = [
         image: supremoHome,
         images: [supremoHome, supremoApp, supremoServices, supremoDashboard, supremoLogin, supremoWhy, supremoServices, supremoProducts, supremoBranches],
         desc: 'A Queuing Management System with a Marketing website for a barber shop with real-time live queuing app for the customers.',
-        tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Firebase'],
+        tags: ['Next.js', 'Tailwind CSS', 'Node.js', 'Firebase'],
         features: [
             'Real-time live queue management & customer status',
             'Barber shop marketing landing page',

@@ -93,7 +93,7 @@ export default function ProjectDetailPage({ project, onBack }: ProjectDetailPage
 
             {/* Image Carousel — Full-width hero */}
             {allImages.length > 0 && (
-                <div className="relative w-full pt-[72px]" style={{ backgroundColor: '#050505' }}>
+                <div className="relative w-full pt-24 md:pt-28 pb-4" style={{ backgroundColor: '#050505' }}>
                     {/* Carousel container */}
                     <div
                         className="relative w-full overflow-hidden"
