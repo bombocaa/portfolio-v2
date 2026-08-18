@@ -124,17 +124,6 @@ export default function AllProjectsPage({ onBack, onViewProject }: AllProjectsPa
                                             {project.desc}
                                         </p>
 
-                                        {project.features && project.features.length > 0 && (
-                                            <div className="mb-5 pl-4" style={{ borderLeft: '2px solid #222' }}>
-                                                <ul className="text-xs leading-relaxed flex flex-col gap-1" style={{ color: '#666', fontFamily: 'DM Sans, sans-serif' }}>
-                                                    {project.features.slice(0, 2).map((feat, idx) => (
-                                                        <li key={idx} className="list-disc list-inside">
-                                                            {feat}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
-                                        )}
 
                                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                             <div className="flex flex-wrap gap-2">

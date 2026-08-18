@@ -51,7 +51,7 @@ export const STACK_GROUPS = [
     },
     {
         label: 'Tools',
-        items: ['Git', 'GitHub', 'VS Code', 'Figma', 'Qase'],
+        items: ['Git', 'GitHub', 'VS Code', 'Figma', 'Qase', 'MapLibre'],
     },
 ]
 
@@ -142,7 +142,20 @@ export const PROJECTS: Project[] = [
 
 // Additional projects displayed on the "View More / All Projects" page (excluding the first 3 featured projects)
 export const MORE_PROJECTS: Project[] = [
-
+    {
+        num: '04',
+        title: 'SJ Homes',
+        category: 'Web App',
+        desc: 'A subdivision and community management platform featuring interactive GIS lot mapping with MapLibre & GeoJSON, resident administration, and facility booking.',
+        tags: ['Laravel', 'React 18', 'Tailwind CSS', 'MySQL', 'MapLibre'],
+        features: [
+            'Interactive subdivision GIS lot mapping powered by MapLibre',
+            'Facility booking & community event management system',
+            'Homeowner and resident portal with administrative dashboard',
+        ],
+        link: '#',
+        year: '2026',
+    },
 ]
 
 export const ALL_PROJECTS: Project[] = [
