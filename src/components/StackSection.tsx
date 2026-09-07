@@ -3,7 +3,7 @@ import { STACK_GROUPS } from '../data/portfolioData'
 
 export default function StackSection() {
     return (
-        <section id="stack" className="px-10 py-28" style={{ borderBottom: '1px solid #141414', backgroundColor: '#0c0c0c' }}>
+        <section id="stack" className="px-6 md:px-10 pt-36 pb-28 min-h-[calc(100vh-80px)]" style={{ borderBottom: '1px solid #141414', backgroundColor: '#0c0c0c' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
                 <div className="mb-16">
                     <SectionLabel num="02" label="Stack" />

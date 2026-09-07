@@ -375,7 +375,7 @@ export default function ProjectDetailPage({ project, onBack }: ProjectDetailPage
 
                         <button
                             type="button"
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                            onClick={() => window.scrollTo(0, 0)}
                             className="text-[10px] tracking-[0.25em] uppercase cursor-pointer transition-colors hover:text-[#c8f135]"
                             style={{ color: '#555', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none' }}
                         >

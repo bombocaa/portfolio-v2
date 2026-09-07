@@ -1,9 +1,13 @@
 import SectionLabel from './SectionLabel'
 import homeProfileImg from '../assets/home_profile.jpg'
 
-export default function HomeSection() {
+interface HomeSectionProps {
+    onNavigate?: (target: string) => void
+}
+
+export default function HomeSection({ onNavigate }: HomeSectionProps = {}) {
     return (
-        <section id="home" className="relative min-h-screen flex items-center justify-center px-6 md:px-10 pt-28 pb-20">
+        <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-6 md:px-10 pt-28 pb-20">
             <div className="w-full" style={{ maxWidth: '1100px' }}>
                 <SectionLabel num="—" label="Web & Front End Developer" />
 
@@ -50,7 +54,13 @@ export default function HomeSection() {
 
                 <div className="flex items-center gap-6 mt-14">
                     <a
-                        href="#projects"
+                        href="/projects"
+                        onClick={(e) => {
+                            if (onNavigate) {
+                                e.preventDefault()
+                                onNavigate('projects')
+                            }
+                        }}
                         className="text-[11px] tracking-[0.22em] uppercase px-6 py-3 transition-all duration-200"
                         style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif' }}
                         onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#d4ff40' }}
@@ -59,7 +69,13 @@ export default function HomeSection() {
                         View Projects
                     </a>
                     <a
-                        href="#contact"
+                        href="/contact"
+                        onClick={(e) => {
+                            if (onNavigate) {
+                                e.preventDefault()
+                                onNavigate('contact')
+                            }
+                        }}
                         className="text-[11px] tracking-[0.22em] uppercase px-6 py-3 transition-all duration-200"
                         style={{ border: '1px solid #222', color: '#555', fontFamily: 'DM Sans, sans-serif' }}
                         onMouseEnter={(e) => { e.currentTarget.style.color = '#f5f0eb'; e.currentTarget.style.borderColor = '#444' }}

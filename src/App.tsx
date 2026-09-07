@@ -12,25 +12,41 @@ import { ALL_PROJECTS, Project } from './data/portfolioData'
 
 type AppView =
     | { page: 'home' }
+    | { page: 'experience' }
+    | { page: 'stack' }
+    | { page: 'projects' }
+    | { page: 'contact' }
     | { page: 'all-projects' }
     | { page: 'project-detail'; project: Project }
 
 function resolveViewFromUrl(): AppView {
     if (typeof window === 'undefined') return { page: 'home' }
-    const path = window.location.pathname
-    const hash = window.location.hash
+    const path = window.location.pathname.toLowerCase()
+    const hash = window.location.hash.toLowerCase()
 
     // Check for project detail: /project/01 or #/project/01
     const pathMatch = path.match(/^\/project\/(.+)$/)
     const hashMatch = hash.match(/^#\/project\/(.+)$/)
     const projectNum = pathMatch?.[1] || hashMatch?.[1]
     if (projectNum) {
-        const project = ALL_PROJECTS.find((p) => p.num === projectNum)
+        const project = ALL_PROJECTS.find((p) => p.num.toLowerCase() === projectNum)
         if (project) return { page: 'project-detail', project }
     }
 
-    if (path === '/projects' || hash === '#/projects' || hash === '#all-projects') {
+    if (path === '/projects/all' || path === '/all-projects' || hash === '#/projects/all' || hash === '#/all-projects' || hash === '#all-projects') {
         return { page: 'all-projects' }
+    }
+    if (path === '/experience' || hash === '#/experience' || hash === '#experience') {
+        return { page: 'experience' }
+    }
+    if (path === '/stack' || hash === '#/stack' || hash === '#stack') {
+        return { page: 'stack' }
+    }
+    if (path === '/projects' || hash === '#/projects' || hash === '#projects') {
+        return { page: 'projects' }
+    }
+    if (path === '/contact' || hash === '#/contact' || hash === '#contact') {
+        return { page: 'contact' }
     }
 
     return { page: 'home' }
@@ -49,40 +65,31 @@ export default function App() {
         }
     }, [])
 
+    const navigateTo = (pageName: string) => {
+        const target = pageName.toLowerCase()
+        const path = target === 'home' ? '/' : `/${target}`
+        window.history.pushState({}, '', path)
+        setView(resolveViewFromUrl())
+        window.scrollTo(0, 0)
+    }
+
     const navigateToAllProjects = () => {
-        window.history.pushState({}, '', '/projects')
+        window.history.pushState({}, '', '/projects/all')
         setView({ page: 'all-projects' })
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo(0, 0)
     }
 
     const navigateToProject = (project: Project) => {
         window.history.pushState({}, '', `/project/${project.num}`)
         setView({ page: 'project-detail', project })
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-
-    const navigateToHome = (targetSectionId?: string) => {
-        window.history.pushState({}, '', targetSectionId ? `/#${targetSectionId}` : '/')
-        setView({ page: 'home' })
-        if (targetSectionId) {
-            setTimeout(() => {
-                const el = document.getElementById(targetSectionId)
-                if (el) {
-                    el.scrollIntoView({ behavior: 'smooth' })
-                } else {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                }
-            }, 60)
-        } else {
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-        }
+        window.scrollTo(0, 0)
     }
 
     if (view.page === 'project-detail') {
         return (
             <ProjectDetailPage
                 project={view.project}
-                onBack={() => navigateToHome('projects')}
+                onBack={() => navigateTo('projects')}
             />
         )
     }
@@ -90,27 +97,39 @@ export default function App() {
     if (view.page === 'all-projects') {
         return (
             <AllProjectsPage
-                onBack={() => navigateToHome('projects')}
+                onBack={() => navigateTo('projects')}
                 onViewProject={navigateToProject}
             />
         )
     }
 
+    const renderMainContent = () => {
+        switch (view.page) {
+            case 'experience':
+                return <ExperienceSection />
+            case 'stack':
+                return <StackSection />
+            case 'projects':
+                return (
+                    <ProjectsSection
+                        onViewAll={navigateToAllProjects}
+                        onViewProject={navigateToProject}
+                    />
+                )
+            case 'contact':
+                return <ContactSection />
+            case 'home':
+            default:
+                return <HomeSection onNavigate={navigateTo} />
+        }
+    }
+
     return (
-        <div style={{ backgroundColor: '#0a0a0a', color: '#f5f0eb', minHeight: '100vh' }}>
-            <Navbar onNavigate={(target) => {
-                if (target === 'home') {
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                }
-            }} />
-            <HomeSection />
-            <ExperienceSection />
-            <StackSection />
-            <ProjectsSection
-                onViewAll={navigateToAllProjects}
-                onViewProject={navigateToProject}
-            />
-            <ContactSection />
+        <div style={{ backgroundColor: '#0a0a0a', color: '#f5f0eb', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <Navbar activePage={view.page} onNavigate={navigateTo} />
+            <main style={{ flex: 1 }}>
+                {renderMainContent()}
+            </main>
             <Footer />
         </div>
     )

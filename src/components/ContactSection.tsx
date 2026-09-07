@@ -8,7 +8,7 @@ const CONTACT_FIELDS = [
 
 export default function ContactSection() {
     return (
-        <section id="contact" className="px-10 py-32" style={{ borderBottom: '1px solid #141414' }}>
+        <section id="contact" className="px-6 md:px-10 pt-36 pb-32 min-h-[calc(100vh-80px)]" style={{ borderBottom: '1px solid #141414' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
                 <SectionLabel num="04" label="Contact" />
 

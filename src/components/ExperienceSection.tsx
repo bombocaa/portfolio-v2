@@ -4,7 +4,7 @@ import { EXPERIENCE } from '../data/portfolioData'
 
 export default function ExperienceSection() {
     return (
-        <section id="experience" className="px-10 py-28" style={{ borderBottom: '1px solid #141414' }}>
+        <section id="experience" className="px-6 md:px-10 pt-36 pb-28 min-h-[calc(100vh-80px)]" style={{ borderBottom: '1px solid #141414' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
                 <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-10 md:gap-20">
                     <div className="pt-1">
