@@ -5,7 +5,7 @@ export default function HomeSection() {
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center px-6 md:px-10 pt-28 pb-20">
             <div className="w-full" style={{ maxWidth: '1100px' }}>
-                <SectionLabel num="—" label="Front End Developer" />
+                <SectionLabel num="—" label="Web & Front End Developer" />
 
                 <div className="flex items-center justify-between gap-6 mb-12">
                     <h1 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(36px, 7vw, 110px)', lineHeight: 0.95, letterSpacing: '-0.025em', color: '#f5f0eb' }}>

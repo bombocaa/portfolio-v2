@@ -20,6 +20,14 @@ import supremoProducts from '../assets/supremo-products.png'
 import supremoBranches from '../assets/supremo-branches.png'
 import supremoLogin from '../assets/supremo-login.png'
 import supremoWhy from '../assets/supremo-why.png'
+import recruitflowLogin from '../assets/recruitflow-login.png'
+import recruitflowDashboard from '../assets/recruitflow-dashboard.png'
+import recruitflowCandidates from '../assets/recruitflow-candidates.png'
+import recruitflowCandidateDetail from '../assets/recruitflow-candidate-detail.png'
+import recruitflowTalentPooling from '../assets/recruitflow-talent-pooling.png'
+import recruitflowUploadResumes from '../assets/recruitflow-upload-resumes.png'
+import recruitflowJobRoles from '../assets/recruitflow-job-roles.png'
+import recruitflowMessagePrompts from '../assets/recruitflow-message-prompts.png'
 
 export const NAV_LINKS = ['Home', 'Experience', 'Stack', 'Projects', 'Contact']
 
@@ -32,7 +40,7 @@ export const EXPERIENCE = [
         tags: ['React.JS', 'Tailwind CSS', 'Laravel', 'PostgreSQL'],
     },
     {
-        role: 'IT Admin - QA Analyst Intern',
+        role: 'IT Admin & QA Analyst Intern',
         company: 'Ollopa Corporation',
         period: 'December 2025 — Febuary 2026',
         desc: 'Conducted weekly QA testing across 4 company websites to identify and log functional bugs, ensuring optimal site performance. Managed, added, and updated property room listings across web portals to maintain accurate real-time details and availability for users.',
@@ -43,15 +51,19 @@ export const EXPERIENCE = [
 export const STACK_GROUPS = [
     {
         label: 'Frontend',
-        items: ['HTML', 'CSS', 'React', 'JavaScript', 'Tailwind CSS', 'Vite', 'Vue', 'Next.js'],
+        items: ['HTML', 'CSS', 'JavaScript'],
     },
     {
-        label: 'Backend',
-        items: ['PHP', 'Laravel', 'Node.js', 'MySQL', 'REST'],
+        label: 'Frameworks',
+        items: ['React', 'Next.js', 'Vue', 'Laravel', 'Tailwind CSS', 'Flutter'],
+    },
+    {
+        label: 'Backend & Database',
+        items: ['PHP', 'Node.js', 'MySQL', 'PostgreSQL', 'Firebase', 'REST'],
     },
     {
         label: 'Tools',
-        items: ['Git', 'GitHub', 'VS Code', 'Figma', 'Qase', 'MapLibre'],
+        items: ['Git', 'GitHub', 'VS Code', 'Figma', 'MapLibre', 'Vite', 'Qase'],
     },
 ]
 
@@ -152,6 +164,31 @@ export const MORE_PROJECTS: Project[] = [
             'Interactive subdivision GIS lot mapping powered by MapLibre',
             'Facility booking & community event management system',
             'Homeowner and resident portal with administrative dashboard',
+        ],
+        link: '#',
+        year: '2026',
+    },
+    {
+        num: '05',
+        title: 'RecruitFlow',
+        category: 'Web App',
+        image: recruitflowDashboard,
+        images: [
+            recruitflowDashboard,
+            recruitflowCandidates,
+            recruitflowCandidateDetail,
+            recruitflowTalentPooling,
+            recruitflowUploadResumes,
+            recruitflowJobRoles,
+            recruitflowMessagePrompts,
+            recruitflowLogin,
+        ],
+        desc: 'An end-to-end applicant tracking and candidate matching platform featuring automated resume parsing, interactive hiring pipelines, AI job-match scoring, and interview scheduling.',
+        tags: ['Laravel', 'React 19', 'Tailwind CSS', 'MySQL', 'Vite', 'Recharts'],
+        features: [
+            'Interactive candidate pipeline & automated resume parsing engine',
+            'AI job-match scoring with candidate timeline & communication management',
+            'Interview scheduling with automated reminders & HR analytics portal',
         ],
         link: '#',
         year: '2026',
