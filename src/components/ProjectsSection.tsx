@@ -1,4 +1,6 @@
 import ProjectLiveLink from './ProjectLiveLink'
+import ProjectContribution from './ProjectContribution'
+import ProjectTypeBadge from './ProjectTypeBadge'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import { PROJECTS, Project } from '../data/portfolioData'
@@ -56,6 +58,7 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
                                         >
                                             {project.title}
                                         </h2>
+                                        <ProjectTypeBadge project={project} />
                                         {(project.category || project.type) && (
                                             <span
                                                 className="text-[9px] tracking-[0.2em] uppercase px-2 py-0.5"
@@ -70,6 +73,8 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
                                     </div>
                                 </div>
 
+                                <ProjectContribution project={project} />
+
                                 <p className="text-sm leading-relaxed mb-4" style={{ color: '#999', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75', maxWidth: '600px' }}>
                                     {project.desc}
                                 </p>
@@ -79,7 +84,6 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
                                         {project.tags.map((tag) => <Tag key={tag} label={tag} />)}
                                     </div>
 
-                                
                                     <ProjectLiveLink project={project} />
                                 </div>
                             </div>

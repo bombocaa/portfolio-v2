@@ -1,4 +1,6 @@
 import ProjectLiveLink from './ProjectLiveLink'
+import ProjectContribution from './ProjectContribution'
+import ProjectTypeBadge from './ProjectTypeBadge'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import Footer from './Footer'
@@ -108,6 +110,7 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                                 >
                                                     {project.title}
                                                 </h2>
+                                                <ProjectTypeBadge project={project} />
                                                 {(project.category || project.type) && (
                                                     <span className="text-[9px] tracking-[0.2em] uppercase px-2 py-0.5" style={{ border: '1px solid #222', color: '#888', fontFamily: 'DM Sans, sans-serif' }}>
                                                         {project.category || project.type}
@@ -118,6 +121,8 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                                 {project.year}
                                             </div>
                                         </div>
+
+                                        <ProjectContribution project={project} />
 
                                         <p className="text-sm leading-relaxed mb-5" style={{ color: '#999', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75', maxWidth: '750px' }}>
                                             {project.desc}
@@ -130,7 +135,7 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                                 ))}
                                             </div>
 
-                                            <div className="flex items-center gap-5">
+                                            <div className="flex w-full items-center gap-5 sm:w-auto">
 
                                                 <ProjectLiveLink project={project} />
                                             </div>

@@ -1,4 +1,7 @@
 import Tag from './Tag'
+import ProjectContribution from './ProjectContribution'
+import ProjectTypeBadge from './ProjectTypeBadge'
+import ProjectLiveLink from './ProjectLiveLink'
 import Footer from './Footer'
 import { Project } from '../data/portfolioData'
 
@@ -28,17 +31,7 @@ export default function ProjectDetailPage({ project, onBack }: ProjectDetailPage
                 </button>
 
                 <div className="hidden md:flex items-center gap-6">
-                    {project.link && project.link !== '#' && (
-                        <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[11px] tracking-[0.22em] uppercase px-4 py-2 transition-all duration-200 cursor-pointer"
-                            style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif', textDecoration: 'none' }}
-                        >
-                            View Live →
-                        </a>
-                    )}
+                    <ProjectLiveLink project={project} />
                     
                 </div>
             </nav>
@@ -64,6 +57,12 @@ export default function ProjectDetailPage({ project, onBack }: ProjectDetailPage
                         <h1 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(32px, 5vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', color: '#f5f0eb' }}>
                             {project.title}
                         </h1>
+                        <div className="mt-4">
+                            <ProjectTypeBadge project={project} />
+                        </div>
+                        <div className="mt-4">
+                            <ProjectContribution project={project} />
+                        </div>
                     </div>
 
                     {/* Two-column details layout */}
@@ -104,17 +103,7 @@ export default function ProjectDetailPage({ project, onBack }: ProjectDetailPage
 
                             {/* Action buttons — mobile only */}
                             <div className="flex md:hidden flex-wrap items-center gap-4 mt-6 mb-10">
-                                {project.link && project.link !== '#' && (
-                                    <a
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-[11px] tracking-[0.22em] uppercase px-6 py-3 transition-all duration-200"
-                                        style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif', textDecoration: 'none' }}
-                                    >
-                                        View Live →
-                                    </a>
-                                )}
+                                <ProjectLiveLink project={project} />
                                 
                             </div>
                         </div>
@@ -154,19 +143,7 @@ export default function ProjectDetailPage({ project, onBack }: ProjectDetailPage
 
                             {/* Desktop action buttons */}
                             <div className="hidden md:flex flex-col gap-3 mt-10">
-                                {project.link && project.link !== '#' && (
-                                    <a
-                                        href={project.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-2 text-[11px] tracking-[0.22em] uppercase px-6 py-3.5 transition-all duration-200 w-full text-center"
-                                        style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif', textDecoration: 'none' }}
-                                        onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#d4ff40' }}
-                                        onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#c8f135' }}
-                                    >
-                                        View Live →
-                                    </a>
-                                )}
+                                <ProjectLiveLink project={project} />
                                 
                             </div>
                         </div>
