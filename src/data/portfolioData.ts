@@ -1,3 +1,33 @@
+import tglobalMarketingHome from '../assets/tglobal-marketing-home.png'
+import tglobalAbout from '../assets/tglobal-about.png'
+import tglobalLocation from '../assets/tglobal-location.png'
+import tglobalVirtualTour from '../assets/tglobal-virtualtour.png'
+import tglobalAR from '../assets/tglobal-ar.png'
+import tglobalLogin from '../assets/tglobal-login.png'
+import tglobalWelcome from '../assets/tglobal-welcome.png'
+import tglobalOverview from '../assets/tglobal-overview.png'
+import tglobalMaintenance from '../assets/tglobal-maintenance.png'
+import tglobalAppLogin from '../assets/tglobal-app-login.jpg'
+import tglobalAppHome from '../assets/tglobal-app-home.jpg'
+import tglobalAppBill from '../assets/tglobal-app-bill.jpg'
+import tglobalAppReservations from '../assets/tglobal-app-reservations.jpg'
+import venacareImg from '../assets/venacare-project-mockup.png'
+import supremoHome from '../assets/supremo-home.png'
+import supremoApp from '../assets/supremo-app.png'
+import supremoDashboard from '../assets/supremo-dashboard.png'
+import supremoServices from '../assets/supremo-services.png'
+import supremoProducts from '../assets/supremo-products.png'
+import supremoBranches from '../assets/supremo-branches.png'
+import supremoLogin from '../assets/supremo-login.png'
+import supremoWhy from '../assets/supremo-why.png'
+import recruitflowLogin from '../assets/recruitflow-login.png'
+import recruitflowDashboard from '../assets/recruitflow-dashboard.png'
+import recruitflowCandidates from '../assets/recruitflow-candidates.png'
+import recruitflowCandidateDetail from '../assets/recruitflow-candidate-detail.png'
+import recruitflowTalentPooling from '../assets/recruitflow-talent-pooling.png'
+import recruitflowUploadResumes from '../assets/recruitflow-upload-resumes.png'
+import recruitflowJobRoles from '../assets/recruitflow-job-roles.png'
+import recruitflowMessagePrompts from '../assets/recruitflow-message-prompts.png'
 
 export const NAV_LINKS = ['Home', 'Experience', 'Stack', 'Projects', 'Contact']
 
@@ -40,6 +70,8 @@ export const STACK_GROUPS = [
 export interface Project {
     num: string
     title: string
+    image?: string
+    images?: string[]
     desc: string
     tags: string[]
     features?: string[]
@@ -57,6 +89,22 @@ export const PROJECTS: Project[] = [
         num: '01',
         title: 'T-Global Residences Hub',
         category: 'Platform',
+        image: tglobalMarketingHome,
+        images: [
+            tglobalMarketingHome,
+            tglobalAbout,
+            tglobalLocation,
+            tglobalVirtualTour,
+            tglobalAR,
+            tglobalLogin,
+            tglobalWelcome,
+            tglobalOverview,
+            tglobalMaintenance,
+            tglobalAppHome,
+            tglobalAppLogin,
+            tglobalAppBill,
+            tglobalAppReservations,
+        ],
         desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
         tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase', 'Tailwind CSS'],
         features: [
@@ -73,6 +121,7 @@ export const PROJECTS: Project[] = [
         num: '02',
         title: 'VenaCare',
         category: 'Mobile App',
+        image: venacareImg,
         desc: 'AI healthcare app for varicose vein severity assessment, CEAP classification, scan history, and wearable vibration therapy control.',
         tags: ['Flutter', 'Node.Js', 'Firebase'],
         features: [
@@ -88,6 +137,8 @@ export const PROJECTS: Project[] = [
         num: '03',
         title: 'Supremo Barber Shop',
         category: 'Web App',
+        image: supremoHome,
+        images: [supremoHome, supremoApp, supremoServices, supremoDashboard, supremoLogin, supremoWhy, supremoServices, supremoProducts, supremoBranches],
         desc: 'A Queuing Management System with a Marketing website for a barber shop with real-time live queuing app for the customers.',
         tags: ['Next.js', 'Tailwind CSS', 'Node.js', 'Firebase'],
         features: [
@@ -121,6 +172,17 @@ export const MORE_PROJECTS: Project[] = [
         num: '05',
         title: 'RecruitFlow',
         category: 'Web App',
+        image: recruitflowDashboard,
+        images: [
+            recruitflowDashboard,
+            recruitflowCandidates,
+            recruitflowCandidateDetail,
+            recruitflowTalentPooling,
+            recruitflowUploadResumes,
+            recruitflowJobRoles,
+            recruitflowMessagePrompts,
+            recruitflowLogin,
+        ],
         desc: 'An end-to-end applicant tracking and candidate matching platform featuring automated resume parsing, interactive hiring pipelines, AI job-match scoring, and interview scheduling.',
         tags: ['Laravel', 'React 19', 'Tailwind CSS', 'MySQL', 'Vite', 'Recharts'],
         features: [

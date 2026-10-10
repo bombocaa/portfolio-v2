@@ -1,4 +1,3 @@
-import ProjectLiveLink from './ProjectLiveLink'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import Footer from './Footer'
@@ -9,7 +8,7 @@ interface AllProjectsPageProps {
     onViewProject?: (project: Project) => void
 }
 
-export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
+export default function AllProjectsPage({ onBack, onViewProject }: AllProjectsPageProps) {
     return (
         <div style={{ backgroundColor: '#0a0a0a', color: '#f5f0eb', minHeight: '100vh' }}>
             {/* Top Navigation Bar */}
@@ -102,12 +101,14 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                     <div className="flex-1 min-w-0">
                                         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-6 mb-3">
                                             <div className="flex items-center gap-3 flex-wrap">
-                                                <h2
-                                                    className="text-left text-xl font-medium block transition-colors duration-200 hover:text-[#c8f135]"
+                                                <button
+                                                    type="button"
+                                                    onClick={() => onViewProject?.(project)}
+                                                    className="text-left text-xl font-medium block cursor-pointer transition-colors duration-200 hover:text-[#c8f135]"
                                                     style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', color: '#f5f0eb', background: 'none', border: 'none', padding: 0 }}
                                                 >
                                                     {project.title}
-                                                </h2>
+                                                </button>
                                                 {(project.category || project.type) && (
                                                     <span className="text-[9px] tracking-[0.2em] uppercase px-2 py-0.5" style={{ border: '1px solid #222', color: '#888', fontFamily: 'DM Sans, sans-serif' }}>
                                                         {project.category || project.type}
@@ -123,6 +124,7 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                             {project.desc}
                                         </p>
 
+
                                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                                             <div className="flex flex-wrap gap-2">
                                                 {project.tags.map((tag) => (
@@ -131,8 +133,26 @@ export default function AllProjectsPage({ onBack }: AllProjectsPageProps) {
                                             </div>
 
                                             <div className="flex items-center gap-5">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => onViewProject?.(project)}
+                                                    className="flex items-center gap-1.5 text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-300 hover:text-[#c8f135]"
+                                                    style={{ color: '#ffffff', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none', padding: 0 }}
+                                                >
+                                                    <span>View Details →</span>
+                                                </button>
 
-                                                <ProjectLiveLink project={project} />
+                                                {project.link && project.link !== '#' && (
+                                                    <a
+                                                        href={project.link}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="text-[11px] tracking-[0.2em] uppercase text-[#c8f135] hover:underline"
+                                                        style={{ fontFamily: 'DM Sans, sans-serif' }}
+                                                    >
+                                                        Live Link ↗
+                                                    </a>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

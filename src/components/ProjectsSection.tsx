@@ -1,4 +1,3 @@
-import ProjectLiveLink from './ProjectLiveLink'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import { PROJECTS, Project } from '../data/portfolioData'
@@ -8,7 +7,7 @@ interface ProjectsSectionProps {
     onViewProject?: (project: Project) => void
 }
 
-export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
+export default function ProjectsSection({ onViewAll, onViewProject }: ProjectsSectionProps) {
     return (
         <section id="projects" className="px-6 md:px-10 pt-36 pb-28 min-h-[calc(100vh-80px)]" style={{ borderBottom: '1px solid #141414' }}>
             <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -50,12 +49,14 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-start justify-between gap-6 mb-3">
                                     <div className="flex items-center gap-3 flex-wrap">
-                                        <h2
-                                            className="text-left text-xl font-medium block transition-colors hover:text-[#c8f135]"
+                                        <button
+                                            type="button"
+                                            onClick={() => onViewProject?.(project)}
+                                            className="text-left text-xl font-medium block cursor-pointer transition-colors hover:text-[#c8f135]"
                                             style={{ fontFamily: 'DM Serif Display, serif', fontSize: '22px', background: 'none', border: 'none', padding: 0, color: '#f5f0eb' }}
                                         >
                                             {project.title}
-                                        </h2>
+                                        </button>
                                         {(project.category || project.type) && (
                                             <span
                                                 className="text-[9px] tracking-[0.2em] uppercase px-2 py-0.5"
@@ -79,8 +80,14 @@ export default function ProjectsSection({ onViewAll }: ProjectsSectionProps) {
                                         {project.tags.map((tag) => <Tag key={tag} label={tag} />)}
                                     </div>
 
-                                
-                                    <ProjectLiveLink project={project} />
+                                    <button
+                                        type="button"
+                                        onClick={() => onViewProject?.(project)}
+                                        className="flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase cursor-pointer transition-colors duration-300 hover:text-[#c8f135]"
+                                        style={{ color: '#ffffff', fontFamily: 'DM Sans, sans-serif', background: 'none', border: 'none', padding: 0 }}
+                                    >
+                                        <span>View Details →</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
