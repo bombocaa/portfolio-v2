@@ -1,4 +1,5 @@
 import SectionLabel from './SectionLabel'
+import VectorWordmarkRaster from './VectorWordmarkRaster'
 import homeProfileImg from '../assets/home_profile.jpg'
 
 interface HomeSectionProps {
@@ -9,11 +10,20 @@ export default function HomeSection({ onNavigate }: HomeSectionProps = {}) {
     return (
         <section id="home" className="relative min-h-[calc(100vh-80px)] flex items-center justify-center px-6 md:px-10 pt-28 pb-20">
             <div className="w-full" style={{ maxWidth: '1100px' }}>
-                <SectionLabel num="—" label="Web & Front End Developer" />
+                <SectionLabel num="—" label="Full-stack Developer - Web Developer - Frontend Developer" />
 
                 <div className="flex items-center justify-between gap-6 mb-12">
-                    <h1 style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(36px, 7vw, 110px)', lineHeight: 0.95, letterSpacing: '-0.025em', color: '#f5f0eb' }}>
-                        Jasper Deguito
+                    <h1 className="min-w-0 flex-1" style={{ height: 'clamp(90px, 16vw, 220px)' }}>
+                        <span className="sr-only">Jasper Deguito</span>
+                        <VectorWordmarkRaster
+                            text="Jasper Deguito"
+                            font={{ fontFamily: 'DM Serif Display, serif', fontWeight: 400, fontSize: 200, letterSpacing: '-0.025em' }}
+                            background="transparent"
+                            textColor="#f5f0eb"
+                            shade="#625e58"
+                            accent="rgba(200, 241, 53, 0.5)"
+                            grid={{ size: 10, gap: 20, labels: true }}
+                        />
                     </h1>
                     <div className="flex-shrink-0">
                         <img
