@@ -1,4 +1,7 @@
 
+import tglobalMarketingPreview from '../assets/tglobal-marketing-home.png'
+import tglobalAdminPreview from '../assets/tglobal-overview.png'
+
 export const NAV_LINKS = ['Home', 'Experience', 'Stack', 'Projects', 'Contact']
 
 export const EXPERIENCE = [
@@ -40,10 +43,16 @@ export const STACK_GROUPS = [
 export interface Project {
     num: string
     title: string
+    projectType?: 'Capstone' | 'Commission' | 'Personal Project'
+    role?: string
+    contribution?: string
     desc: string
     tags: string[]
     features?: string[]
     link?: string
+    demoLogin?: { email: string; password: string }
+    simulatorVideo?: string
+    livePages?: { label: string; image: string; url?: string }[]
     github?: string
     year: string
     featured?: boolean
@@ -56,6 +65,9 @@ export const PROJECTS: Project[] = [
     {
         num: '01',
         title: 'T-Global Residences Hub',
+        projectType: 'Capstone',
+        role: 'Frontend Developer · Backend Contributor',
+        contribution: 'Built the entire frontend and helped with backend development.',
         category: 'Platform',
         desc: 'A complete dormitory management system with a Marketing website, Tenant app.',
         tags: ['React.Js', 'JavaScript', 'Node.Js', 'Firebase', 'Tailwind CSS'],
@@ -65,13 +77,21 @@ export const PROJECTS: Project[] = [
             'Cross-platform tenant mobile app with Firebase',
             'Used AI Chatbot for guest/non-tenant inquiries'
         ],
-        link: '',
+        link: 'https://tglobal-marketing-side.vercel.app/',
+        livePages: [
+            { label: 'Marketing Side', image: tglobalMarketingPreview, url: 'https://tglobal-marketing-side.vercel.app/' },
+            { label: 'Admin Side', image: tglobalAdminPreview },
+        ],
         year: '2025-2026',
         featured: true,
     },
     {
         num: '02',
         title: 'VenaCare',
+        projectType: 'Commission',
+        role: 'Mobile Developer',
+        contribution: 'Developed the mobile side of the application.',
+        simulatorVideo: '/videos/venacare-phone-walkthrough.mp4',
         category: 'Mobile App',
         desc: 'AI healthcare app for varicose vein severity assessment, CEAP classification, scan history, and wearable vibration therapy control.',
         tags: ['Flutter', 'Node.Js', 'Firebase'],
@@ -87,6 +107,9 @@ export const PROJECTS: Project[] = [
     {
         num: '03',
         title: 'Supremo Barber Shop',
+        projectType: 'Capstone',
+        role: 'UI Designer',
+        contribution: 'Redesigned the entire system.',
         category: 'Web App',
         desc: 'A Queuing Management System with a Marketing website for a barber shop with real-time live queuing app for the customers.',
         tags: ['Next.js', 'Tailwind CSS', 'Node.js', 'Firebase'],
@@ -95,7 +118,7 @@ export const PROJECTS: Project[] = [
             'Barber shop marketing landing page',
             'Automated queue ticket tracking & updates',
         ],
-        link: '#',
+        link: 'https://supremo-management-system-8h52.vercel.app/',
         year: '2026',
         featured: true,
     },
@@ -106,6 +129,9 @@ export const MORE_PROJECTS: Project[] = [
     {
         num: '04',
         title: 'SJ Homes',
+        projectType: 'Personal Project',
+        role: 'Full-stack Developer',
+        contribution: 'Developed both the frontend and backend of the platform.',
         category: 'Web App',
         desc: 'A subdivision and community management platform featuring interactive GIS lot mapping with MapLibre & GeoJSON, resident administration, and facility booking.',
         tags: ['Laravel', 'React 18', 'Tailwind CSS', 'MySQL', 'MapLibre'],
@@ -114,12 +140,16 @@ export const MORE_PROJECTS: Project[] = [
             'Facility booking & community event management system',
             'Homeowner and resident portal with administrative dashboard',
         ],
-        link: '#',
+        link: 'https://sjhomes-subdivision-system-npo7.vercel.app/login',
+        demoLogin: { email: 'demo@example.com', password: 'Demo@2026!' },
         year: '2026',
     },
     {
         num: '05',
         title: 'RecruitFlow',
+        projectType: 'Personal Project',
+        role: 'Full-stack Developer',
+        contribution: 'Developed both the frontend and backend of the application.',
         category: 'Web App',
         desc: 'An end-to-end applicant tracking and candidate matching platform featuring automated resume parsing, interactive hiring pipelines, AI job-match scoring, and interview scheduling.',
         tags: ['Laravel', 'React 19', 'Tailwind CSS', 'MySQL', 'Vite', 'Recharts'],

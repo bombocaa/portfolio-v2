@@ -1,64 +1,42 @@
+﻿import type { CSSProperties } from 'react'
 import SectionLabel from './SectionLabel'
 import Tag from './Tag'
 import { EXPERIENCE } from '../data/portfolioData'
+import './sections-design.css'
 
 export default function ExperienceSection() {
     return (
-        <section id="experience" className="px-6 md:px-10 pt-36 pb-28 min-h-[calc(100vh-80px)]" style={{ borderBottom: '1px solid #141414' }}>
-            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-                <div className="grid grid-cols-1 md:grid-cols-[240px_1fr] gap-10 md:gap-20">
-                    <div className="pt-1">
-                        <SectionLabel num="01" label="Experience" />
-                        <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1.1, letterSpacing: '-0.02em', color: '#f5f0eb' }}>
-                            Professional
-                            <br />
-                            <span style={{ fontStyle: 'italic', color: '#444' }}>experience.</span>
-                        </div>
-                    </div>
+        <section id="experience" className="page-section experience-section" aria-labelledby="experience-heading">
+            <div className="page-container experience-layout">
+                <header className="experience-heading page-enter">
+                    <SectionLabel num="01" label="Experience" />
+                    <h1 id="experience-heading" className="page-heading">
+                        Professional experience.
+                    </h1>
+                </header>
 
-                    <div className="flex flex-col">
-                        {EXPERIENCE.map((exp) => (
-                            <div
-                                key={exp.company}
-                                className="group py-8 transition-colors duration-200 cursor-default"
-                                style={{ borderBottom: '1px solid #141414' }}
-                            >
-                                <div className="flex items-start justify-between gap-8 mb-3">
+                <div className="experience-list">
+                    {EXPERIENCE.map((exp, index) => (
+                        <article
+                            key={exp.company}
+                            className="experience-entry reveal-on-scroll"
+                            style={{ '--reveal-delay': `${index * 50}ms` } as CSSProperties}
+                        >
+                            <div className="experience-details">
+                                <div className="experience-entry-header">
                                     <div>
-                                        <span
-                                            className="text-lg font-medium block"
-                                            style={{ color: '#f5f0eb', fontFamily: 'DM Sans, sans-serif', fontSize: '18px' }}
-                                        >
-                                            {exp.role}
-                                        </span>
-                                        <span
-                                            className="text-sm block mt-0.5 w-full"
-                                            style={{ color: '#c8f135', fontFamily: 'DM Sans, sans-serif' }}
-                                        >
-                                            {exp.company}
-                                        </span>
+                                        <h2 className="experience-role">{exp.role}</h2>
+                                        <p className="experience-company">{exp.company}</p>
                                     </div>
-                                    <div className="flex-shrink-0">
-                                        <span
-                                            className="text-[11px] tracking-[0.15em] uppercase text-right block"
-                                            style={{ color: '#444', fontFamily: 'DM Sans, sans-serif' }}
-                                        >
-                                            {exp.period}
-                                        </span>
-                                    </div>
+                                    <p className="experience-period">{exp.period}</p>
                                 </div>
-                                <p
-                                    className="text-sm leading-relaxed mb-4"
-                                    style={{ color: '#555', fontFamily: 'DM Sans, sans-serif', fontSize: '14px', lineHeight: '1.75' }}
-                                >
-                                    {exp.desc}
-                                </p>
-                                <div className="flex flex-wrap gap-2">
+                                <p className="experience-description">{exp.desc}</p>
+                                <div className="experience-tags">
                                     {exp.tags.map((tag) => <Tag key={tag} label={tag} />)}
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </article>
+                    ))}
                 </div>
             </div>
         </section>

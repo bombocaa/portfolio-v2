@@ -1,4 +1,6 @@
+﻿import type { CSSProperties } from 'react'
 import SectionLabel from './SectionLabel'
+import './sections-design.css'
 
 const CONTACT_FIELDS = [
     { label: 'Email', value: 'jasperdeguito20@gmail.com', href: 'mailto:jasperdeguito20@gmail.com' },
@@ -8,55 +10,39 @@ const CONTACT_FIELDS = [
 
 export default function ContactSection() {
     return (
-        <section id="contact" className="px-6 md:px-10 pt-36 pb-32 min-h-[calc(100vh-80px)]" style={{ borderBottom: '1px solid #141414' }}>
-            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-                <SectionLabel num="04" label="Contact" />
+        <section id="contact" className="page-section contact-section" aria-labelledby="contact-heading">
+            <div className="page-container contact-layout">
+                <header className="contact-intro page-enter">
+                    <SectionLabel num="04" label="Contact" />
+                    <h1 id="contact-heading" className="page-heading">
+                        Let's build something worth using.
+                    </h1>
+                    <p className="contact-description">
+                        Open to internships, full-time roles, and interesting freelance work. If you're building something and need someone who cares about the front end — reach out.
+                    </p>
+                </header>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-end">
-                    <div>
-                        <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(40px, 6vw, 88px)', lineHeight: 1, letterSpacing: '-0.025em', color: '#f5f0eb', marginBottom: '24px' }}>
-                            Let's build
-                            <br />
-                            <span style={{ color: '#c8f135' }}>something</span>
-                            <br />
-                            <span style={{ fontStyle: 'italic', color: '#2a2a2a' }}>worth using.</span>
-                        </div>
-                        <p style={{ color: '#444', fontFamily: 'DM Sans, sans-serif', fontSize: '15px', lineHeight: '1.8', maxWidth: '380px' }}>
-                            Open to internships, full-time roles, and interesting freelance work. If you're building something and need someone who cares about the front end — reach out.
-                        </p>
-                    </div>
-
-                    <div className="flex flex-col gap-0">
-                        {CONTACT_FIELDS.map((field) => (
-                            <div key={field.label} className="py-5 group" style={{ borderBottom: '1px solid #141414' }}>
-                                <div className="flex items-center justify-between">
-                                    <span className="text-[10px] tracking-[0.25em] uppercase w-28 flex-shrink-0" style={{ color: '#333', fontFamily: 'DM Sans, sans-serif' }}>
-                                        {field.label}
-                                    </span>
-                                    <a
-                                        href={field.href}
-                                        target={field.href.startsWith('mailto:') ? '_self' : '_blank'}
-                                        rel="noopener noreferrer"
-                                        className="text-sm text-right flex-1 transition-colors hover:text-[#c8f135]"
-                                        style={{ color: '#888', fontFamily: 'DM Sans, sans-serif' }}
-                                    >
-                                        {field.value}
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                        <div className="pt-8">
+                <div className="contact-actions">
+                    <div className="contact-links">
+                        {CONTACT_FIELDS.map((field, index) => (
                             <a
-                                href="mailto:jasperdeguito20@gmail.com"
-                                className="inline-flex items-center gap-3 text-[11px] tracking-[0.22em] uppercase px-8 py-4 cursor-pointer transition-all duration-200"
-                                style={{ backgroundColor: '#c8f135', color: '#0a0a0a', fontFamily: 'DM Sans, sans-serif' }}
-                                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = '#d4ff40' }}
-                                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = '#c8f135' }}
+                                key={field.label}
+                                href={field.href}
+                                target={field.href.startsWith('mailto:') ? '_self' : '_blank'}
+                                rel="noopener noreferrer"
+                                className={`contact-link contact-link-${field.label.toLowerCase()} reveal-on-scroll`}
+                                style={{ '--reveal-delay': `${index * 50}ms` } as CSSProperties}
                             >
-                                <span>Send a message</span>
-                                <span style={{ fontSize: '16px' }}>→</span>
+                                <span className="contact-link-label">{field.label}</span>
+                                <span className="contact-link-value">{field.value}</span>
                             </a>
-                        </div>
+                        ))}
+                    </div>
+                    <div className="contact-message reveal-on-scroll">
+                        <a href="mailto:jasperdeguito20@gmail.com" className="button button-primary">
+                            <span>Send a message</span>
+                            <span aria-hidden="true">→</span>
+                        </a>
                     </div>
                 </div>
             </div>

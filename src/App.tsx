@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import type { MouseEvent } from 'react'
 import Navbar from './components/Navbar'
 import HomeSection from './components/HomeSection'
 import ExperienceSection from './components/ExperienceSection'
@@ -54,6 +55,57 @@ function resolveViewFromUrl(): AppView {
 
 export default function App() {
     const [view, setView] = useState<AppView>(resolveViewFromUrl)
+    const viewKey = view.page === 'project-detail' ? `project-${view.project.num}` : view.page
+    const previousView = useRef(viewKey)
+
+    const skipToContent = (event: MouseEvent<HTMLAnchorElement>) => {
+        event.preventDefault()
+        const main = document.getElementById('main-content')
+        main?.focus({ preventScroll: true })
+        main?.scrollIntoView({ block: 'start' })
+    }
+
+    useEffect(() => {
+        const elements = document.querySelectorAll<HTMLElement>('.reveal-on-scroll')
+        const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)')
+        const revealAll = () => elements.forEach((element) => element.classList.add('is-visible'))
+        let observer: IntersectionObserver | undefined
+
+        if (motionPreference.matches || !('IntersectionObserver' in window)) {
+            revealAll()
+        } else {
+            observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible')
+                        observer?.unobserve(entry.target)
+                    }
+                })
+            }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' })
+            elements.forEach((element) => {
+                element.classList.add('reveal-ready')
+                observer?.observe(element)
+            })
+        }
+
+        const handleMotionPreference = () => {
+            if (motionPreference.matches) {
+                observer?.disconnect()
+                revealAll()
+            }
+        }
+        motionPreference.addEventListener('change', handleMotionPreference)
+
+        if (previousView.current !== viewKey) {
+            document.getElementById('main-content')?.focus({ preventScroll: true })
+            previousView.current = viewKey
+        }
+
+        return () => {
+            observer?.disconnect()
+            motionPreference.removeEventListener('change', handleMotionPreference)
+        }
+    }, [viewKey])
 
     useEffect(() => {
         const handleLocationChange = () => setView(resolveViewFromUrl())
@@ -70,36 +122,43 @@ export default function App() {
         const path = target === 'home' ? '/' : `/${target}`
         window.history.pushState({}, '', path)
         setView(resolveViewFromUrl())
-        window.scrollTo(0, 0)
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
 
     const navigateToAllProjects = () => {
         window.history.pushState({}, '', '/projects/all')
         setView({ page: 'all-projects' })
-        window.scrollTo(0, 0)
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
 
     const navigateToProject = (project: Project) => {
         window.history.pushState({}, '', `/project/${project.num}`)
         setView({ page: 'project-detail', project })
-        window.scrollTo(0, 0)
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
     }
 
     if (view.page === 'project-detail') {
         return (
-            <ProjectDetailPage
-                project={view.project}
-                onBack={() => navigateTo('projects')}
-            />
+            <>
+                <a className="skip-link" href="#main-content" onClick={skipToContent}>Skip to content</a>
+                <ProjectDetailPage
+                    key={viewKey}
+                    project={view.project}
+                    onBack={() => navigateTo('projects')}
+                />
+            </>
         )
     }
 
     if (view.page === 'all-projects') {
         return (
-            <AllProjectsPage
-                onBack={() => navigateTo('projects')}
-                onViewProject={navigateToProject}
-            />
+            <>
+                <a className="skip-link" href="#main-content" onClick={skipToContent}>Skip to content</a>
+                <AllProjectsPage
+                    onBack={() => navigateTo('projects')}
+                    onViewProject={navigateToProject}
+                />
+            </>
         )
     }
 
@@ -120,14 +179,24 @@ export default function App() {
                 return <ContactSection />
             case 'home':
             default:
-                return <HomeSection onNavigate={navigateTo} />
+                return (
+                    <>
+                        <HomeSection onNavigate={navigateTo} />
+                        <ProjectsSection
+                            compact
+                            onViewAll={navigateToAllProjects}
+                            onViewProject={navigateToProject}
+                        />
+                    </>
+                )
         }
     }
 
     return (
-        <div style={{ backgroundColor: '#0a0a0a', color: '#f5f0eb', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <div className="app-shell">
+            <a className="skip-link" href="#main-content" onClick={skipToContent}>Skip to content</a>
             <Navbar activePage={view.page} onNavigate={navigateTo} />
-            <main style={{ flex: 1 }}>
+            <main key={viewKey} id="main-content" tabIndex={-1} className="app-main">
                 {renderMainContent()}
             </main>
             <Footer />

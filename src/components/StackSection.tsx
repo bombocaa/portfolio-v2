@@ -1,44 +1,33 @@
+﻿import type { CSSProperties } from 'react'
 import SectionLabel from './SectionLabel'
 import { STACK_GROUPS } from '../data/portfolioData'
+import './sections-design.css'
 
 export default function StackSection() {
     return (
-        <section id="stack" className="px-6 md:px-10 pt-36 pb-28 min-h-[calc(100vh-80px)]" style={{ borderBottom: '1px solid #141414', backgroundColor: '#0c0c0c' }}>
-            <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-                <div className="mb-16">
+        <section id="stack" className="page-section stack-section" aria-labelledby="stack-heading">
+            <div className="page-container">
+                <header className="stack-heading page-enter">
                     <SectionLabel num="02" label="Stack" />
-                    <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1.05, letterSpacing: '-0.02em', color: '#f5f0eb' }}>
-                        Tools I use for
-                        <span style={{ fontStyle: 'italic', color: '#333' }}> work.</span>
-                    </div>
-                </div>
+                    <h1 id="stack-heading" className="page-heading">
+                        Tools I use for work.
+                    </h1>
+                </header>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
-                    {STACK_GROUPS.map((group) => (
-                        <div key={group.label}>
-                            <div
-                                className="text-[10px] tracking-[0.3em] uppercase mb-5 pb-4"
-                                style={{ color: '#c8f135', fontFamily: 'DM Sans, sans-serif', borderBottom: '1px solid #181818' }}
-                            >
-                                {group.label}
-                            </div>
-                            <ul className="space-y-3">
+                <div className="stack-grid">
+                    {STACK_GROUPS.map((group, index) => (
+                        <article
+                            key={group.label}
+                            className="stack-group reveal-on-scroll"
+                            style={{ '--reveal-delay': `${index * 50}ms` } as CSSProperties}
+                        >
+                            <h2 className="stack-group-heading">{group.label}</h2>
+                            <ul className="stack-items">
                                 {group.items.map((item) => (
-                                    <li key={item} className="flex items-center gap-3 group cursor-default">
-                                        <div
-                                            className="w-1 h-1 rounded-full flex-shrink-0 transition-colors duration-200 group-hover:bg-[#c8f135]"
-                                            style={{ backgroundColor: '#222' }}
-                                        />
-                                        <span
-                                            className="text-sm transition-colors duration-200 group-hover:text-[#f5f0eb]"
-                                            style={{ color: '#555', fontFamily: 'DM Sans, sans-serif' }}
-                                        >
-                                            {item}
-                                        </span>
-                                    </li>
+                                    <li key={item} className="stack-item">{item}</li>
                                 ))}
                             </ul>
-                        </div>
+                        </article>
                     ))}
                 </div>
             </div>
